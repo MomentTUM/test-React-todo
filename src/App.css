@@ -1,38 +1,204 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+body {
+  background-color: antiquewhite;
+  color: lightgray;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.container {
+  max-width: 50vw;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+header {
+  grid-area: header;
+  padding-top: 6rem;
+}
+header h1 {
+  color: #ead7d7;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 5rem;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
+.main {
+  grid-area: main;
+  margin-top: 2rem;
+}
+.main div {
+  /* display: flex; */
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+.main .listGroup {
+  outline: 1px solid rgba(192, 192, 192, 0.3);
+}
+.main p {
   pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main form {
+  position: relative;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.btnComplete {
+  position: absolute;
+  z-index: 1;
+  left: 0.8rem;
+  top: 0.8rem;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid rgba(192, 192, 192, 0.4);
+  border-radius: 50%;
+  background-color: inherit;
+  font-size: x-large;
+  color: silver;
+}
+.btnComplete:hover {
+  color: rgb(34, 139, 34);
+}
+.btnAllComplete {
+  position: absolute;
+  z-index: 1;
+  left: 0.8rem;
+  top: 0.8rem;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background-color: inherit;
+  font-size: x-large;
+  color: silver;
+}
+.btnAllComplete:hover {
+  color: rgba(34, 139, 34, 0.7);
+}
+.btnDelete {
+  position: absolute;
+  z-index: 1;
+  right: 0.8rem;
+  top: 0.8rem;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background-color: inherit;
+  font-size: x-large;
+  color: silver;
+}
+.btnDelete:hover {
+  color: rgba(139, 34, 34, 0.7);
+}
+.listGroup {
+  position: relative;
+  width: 100%;
+  background-color: white;
+  border: none;
+}
+.listItem {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: white;
+  width: 100%;
+  border: none;
+  outline: 1px solid rgba(192, 192, 192, 0.3);
+  color: gray;
+  font-size: 24px;
+  user-select: none;
+  padding: 16px 16px 16px 60px;
+}
+.listItem.completed span {
+  text-decoration: line-through;
+  color: silver;
+}
+.status {
+  position: relative;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: white;
+  width: 100%;
+  border: none;
+  outline: 1px solid rgba(192, 192, 192, 0.3);
+  color: gray;
+  font-size: 24px;
+  padding: 16px 16px 16px 60px;
+}
+.status button {
+  position: relative;
+  width: 5rem;
+  height: 2rem;
+  cursor: pointer;
+  background-color: rgba(246, 246, 246, 0.5);
+  border: 1px solid silver;
+  border-radius: 0.2rem;
+  margin-left: 0.5rem;
+}
+.status .active {
+  background-color: #faebd7;
+  box-shadow: 0 0 20px 1px #ff91001d;
+}
+.status span {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-size: medium;
+  user-select: none;
+}
+.status .btnClear {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: medium;
+  color: #e2d4c1;
+  cursor: pointer;
+  user-select: none;
 }
 
-.App-link {
-  color: #61dafb;
+.status .btnClear:hover {
+  text-decoration: underline;
+  color: rgb(122, 194, 122)
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main input {
+  position: relative;
+  width: 100%;
+  border: none;
+  color: gray;
+  font-size: 24px;
+  outline: 1px solid rgba(192, 192, 192, 0.4);
+  padding: 16px 16px 16px 60px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+input::placeholder {
+  color: silver;
+}
+.error {
+  position: absolute;
+  left: 3rem;
+  bottom: 0;
+  color: red;
+}
+footer {
+  grid-area: footer;
+  color: #ead7d7;
+  text-align: center;
+  padding: 20px 0;
+}
+footer p {
+  color: silver;
+  line-height: 1.5rem;
+  font-size: small;
 }
